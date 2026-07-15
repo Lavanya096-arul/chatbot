@@ -8,16 +8,13 @@ class DummyMessage:
 class TestExtractText(unittest.TestCase):
 
     def test_extract_content(self):
-        msg = {"content": "Hello"}
-        self.assertEqual(extract_text(msg), "Hello")
+        self.assertEqual(extract_text({"content": "Hello"}), "Hello")
 
     def test_extract_text_key(self):
-        msg = {"text": "Hi there"}
-        self.assertEqual(extract_text(msg), "Hi there")
+        self.assertEqual(extract_text({"text": "Hi there"}), "Hi there")
 
     def test_extract_object_content(self):
-        msg = DummyMessage()
-        self.assertEqual(extract_text(msg), "Gemini Response")
+        self.assertEqual(extract_text(DummyMessage()), "Gemini Response")
 
 if __name__ == "__main__":
     unittest.main()
